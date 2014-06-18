@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>¿Cómo vamos Nuevo León?</title>
+    <meta name="description" content="como vamos nuevo leon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css">
+    <link rel="stylesheet" href="main.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+</head>
+<body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <h1>Alcalde, ¿Cómo vamos?</h1>
+        <p>Se muestra por omisión los resultados históricos para la acción de <em>Depuración policial transparente</em>. Si lo desea puede seleccionar otra acción en el siguiente listado.</p>
+
+        <p><label for="revision">Acciones:</label>
+            <select id="revision">
+                <optgroup label="Seguridad">
+                    <option value="DepuracionPolicialTransparente">Depuración policial transparente</option>
+                    <option value="PoliciasHonestosBienRemunerados">Polícias honestos bien remunerados</option>
+                    <option value="3PoliciasPorCada1000Habitantes">Mínimo 3 policías por cada 1,000 habitantes</option>
+                    <option value="IndicadoresDelitoEnVerde">Indicadores de delito verde</option>
+                    <option value="PromedioSeguridad">Promedio seguridad</option>
+                </optgroup>
+                <optgroup label="Transparencia">
+                    <option value="NiUnCasinoMas">Ni un casino más</option>
+                    <option value="NiUnCompadreIncomodoMas">Ni un compadre incómodo más</option>
+                    <option value="PromedioTransparencia">Promedio transparencia</option>
+                </optgroup>
+                <optgroup label="Espacios públicos">
+                    <option value="NuestrasCallesParaLasFamilias">Nuestras calles para las familias</option>
+                    <option value="ReforestacionIntensiva">Reforestación intensiva: 1 árbol por cada 3 habitantes</option>
+                    <option value="1UnidadDeportiva">1 unidad deportiva por cada 50,000 habitantes</option>
+                    <option value="PromedioEspaciosPublicos">Promedio espacios públicos</option>
+                </optgroup>
+                <optgroup label="Reunión Bimestral">
+                    <option value="Reuniones">10 para un alcalde de 10</option>
+                </optgroup>
+            </select>
+        </p>
+
+        <div id="container"></div>
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+        <script src="http://code.highcharts.com/modules/exporting.js"></script>
+        <script src="historial.js"></script>
+</body>
+</html>
