@@ -237,7 +237,8 @@
             drillDownCountyData,
             accum,
             counter,
-            value;
+            value,
+            $categories = $("#category");
 
         Trends.altSeriesData = [];
         Trends.mainGraphSeriesData = [];
@@ -253,12 +254,6 @@
             for (var j = 1; j <= 10; j++) {
                 value = parseInt(sourceData[i][Trends.columnsMapper[j - 1]], 10);
 
-                // Main Graph data
-                if ($.isNumeric(value)) {
-                    accum = accum + value;
-                    counter = counter + 1;
-                }
-
                 drillDownCountyData.push(["Acción " + j, value]);
 
                 // Alternative Graph Data
@@ -269,7 +264,7 @@
             Trends.mainGraphSeriesData.push({
                 drilldown: county,
                 name: county,
-                y: Math.round(accum / counter)
+                y: parseInt(sourceData[i][$categories.val()], 10)
             });
 
             Trends.mainDrillDown.push({
@@ -323,7 +318,8 @@
     $(function () {
         // Get the revisions
         var query = "SELECT DISTINCT(\"NumeroEvaluacion\") FROM \"" + Trends.resource_id + "\" ORDER BY \"NumeroEvaluacion\" DESC",
-            url = Trends.ckan_api + query;
+            url = Trends.ckan_api + query,
+            $container = $("body");
 
         $.getJSON(url, function (data) {
             drawOptions(data.result.records);
@@ -331,9 +327,9 @@
             drawContainer(data.result.records[0].NumeroEvaluacion);
         });
 
-        // When somebody change the revision redraw the chart
-        $("body").on("change", "#revision", function () {
-            var targetRevision = parseInt($(this).val(), 10);
+        // When somebody change the revision or the category redraw the charts
+        $container.on("change", "#revision, #category", function () {
+            var targetRevision = parseInt($("#revision").val(), 10);
 
             drawContainer(targetRevision);
         });
