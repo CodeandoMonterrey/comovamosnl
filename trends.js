@@ -153,7 +153,7 @@
                     var pointName,
                         pointColor,
                         template = "<span style='font-size:11px'>{{seriesName}}</span><br />\
-                    <span style='color:\"{{pointColor}}\"'>{{pointName}}</span>:\
+                    <span style='color: {{pointColor}}'>{{pointName}}</span>:\
                     <strong>{{pointY}}</strong><br />";
 
                     if (Trends.categories[this.point.name] !== undefined) {
@@ -197,30 +197,34 @@
             },
             tooltip: {
                 formatter: function () {
-                    // TODO: Please use Mustache
-                    var s = "<span style=\"font-size: 10px;font-weight:bold\">";
-                    s += Trends.categories[this.points[0].key];
-                    s += "</span><table>";
+                    var template = "<span style='font-size: 10px; font-weight: bold'>{{category}}</span>\
+                    <table>\
+                    {{#points}}\
+                    <tr>\
+                    <td style='color: {{seriesColor}}; padding: 0'>{{seriesName}}</td>\
+                    <td style='padding: 0'><strong>{{pointY}}</strong></td>\
+                    </tr>\
+                    {{/points}}\
+                    </table>";
+
+                    var data = {
+                        category: Trends.categories[this.points[0].key],
+                        points: []
+                    };
 
                     for (var i = 0, l = this.points.length; i < l; i++) {
-                        s += "<tr><td style=\"color:";
-                        s += this.points[i].series.color;
-                        s += "; padding: 0\">";
-                        s += this.points[i].series.name;
-                        s += "</td><td style=\"padding:0\"><strong>";
-
-                        if ($.isNumeric(this.points[i].y)) {
-                            s += this.points[i].y;
-                        } else {
-                            s += "No disponible";
-                        }
-
-                        s += "</strong></td></tr>";
+                        data.points.push({
+                            seriesColor: this.points[i].series.color,
+                            seriesName: this.points[i].series.name,
+                            pointY: ($.isNumeric(this.points[i].y)) ? this.points[i].y : "No disponible"
+                        });
                     }
 
-                    s += "</table>";
+                    Mustache.parse(template);
 
-                    return s;
+                    var rendered = Mustache.render(template, data);
+
+                    return rendered;
                 },
                 shared: true,
                 useHTML: true
