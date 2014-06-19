@@ -72,21 +72,21 @@
      * Draw <select> options
      *
      * @function drawOptions
-     * @param {Array} revisions - Array of revisions by Alcalde Como Vamos
+     * @param {Array} result - Number of revisions made by Alcalde Como Vamos
      */
-    function drawOptions(revisions) {
-        var revisionOptions = "<select id=\"revision\">",
-            $revisionSelector = $("#revision"),
-            currentRevision;
+    function drawOptions(result) {
+        var $revisionSelector = $("#revision"),
+            revisionOptionsTemplate = "<select id='revision'>\
+            {{#records}}\
+            <option value='{{NumeroEvaluacion}}'>{{NumeroEvaluacion}}</option>\
+            {{/records}}\
+            </select>";
 
-        for (var i = 0, l = revisions.length; i < l; i++) {
-            currentRevision = revisions[i].NumeroEvaluacion;
+        Mustache.parse(revisionOptionsTemplate);
 
-            revisionOptions += "<option value=\"" + currentRevision + "\">" + currentRevision + "</option>";
-        }
+        var rendered = Mustache.render(revisionOptionsTemplate, result);
 
-        revisionOptions += "</select>";
-        $revisionSelector.replaceWith(revisionOptions);
+        $revisionSelector.replaceWith(rendered);
     }
 
     /**
@@ -150,13 +150,11 @@
             },
             tooltip: {
                 formatter: function () {
-                    // TODO: Please use Mustache or EJS
                     var pointName,
                         pointColor,
-                        s = "<span style=\"font-size:11px\">";
-
-                    s += this.series.name;
-                    s += "</span><br />";
+                        template = "<span style='font-size:11px'>{{seriesName}}</span><br />\
+                    <span style='color:\"{{pointColor}}\"'>{{pointName}}</span>:\
+                    <strong>{{pointY}}</strong><br />";
 
                     if (Trends.categories[this.point.name] !== undefined) {
                         pointName = Trends.categories[this.point.name];
@@ -166,10 +164,16 @@
                         pointColor = this.point.color;
                     }
 
-                    s += "<span style=\"color:" + pointColor + "\">" + pointName;
-                    s += "</span>: <strong>" + this.point.y + "</strong><br />";
+                    Mustache.parse(template);
 
-                    return s;
+                    var rendered = Mustache.render(template, {
+                        seriesName: this.series.name,
+                        pointColor: pointColor,
+                        pointName: pointName,
+                        pointY: this.point.y
+                    });
+
+                    return rendered;
                 },
                 useHTML: true
             },
@@ -193,7 +197,7 @@
             },
             tooltip: {
                 formatter: function () {
-                    // TODO: Please use Mustache or EJS
+                    // TODO: Please use Mustache
                     var s = "<span style=\"font-size: 10px;font-weight:bold\">";
                     s += Trends.categories[this.points[0].key];
                     s += "</span><table>";
@@ -322,7 +326,7 @@
             $container = $("body");
 
         $.getJSON(url, function (data) {
-            drawOptions(data.result.records);
+            drawOptions(data.result);
 
             drawContainer(data.result.records[0].NumeroEvaluacion);
         });
