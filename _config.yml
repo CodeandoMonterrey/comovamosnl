@@ -2,3 +2,4 @@ name: Alcalde, ¿Cómo Vamos?
 markdown: kramdown
 pygments: true
 encoding: utf-8
+baseurl: /comovamosnl
