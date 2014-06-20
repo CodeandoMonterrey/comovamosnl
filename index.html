@@ -1,65 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+---
+layout: default
+title: Alcalde, ¿Cómo Vamos?
+script: trends.js
+---
 
-    <title>Hacking Monterrey</title>
-    <meta name="description" content="Hacking Monterrey es un equipo entusiasta en brindar soluciones cívicas en Monterrey.">
-    <meta name="keywords" content="civic, hacking, monterrey">
-
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:image:src" content="http://hackingmty.org/images/">
-    <meta name="twitter:title" content="Hacking Monterrey">
-    <meta name="twitter:description" content="Hacking Monterrey es un equipo entusiasta en brindar soluciones cívicas en Monterrey.">
-    <meta name="twitter:creator" content="@HackNightMTY">
-
-    <!-- Open Graph support -->
-    <meta property="og:locale" content="es_MX">
-    <meta property="og:title" content="Hacking Monterrey" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://hackingmty.org/index.html" />
-    <meta property="og:site_name" content="Hacking Monterrey">
-    <meta property="og:description" content="Hacking Monterrey es un equipo entusiasta en brindar soluciones cívicas en Monterrey.">
-
-    <!-- Bootstrap core CSS -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="http://hackingmty.org/css/custom.css" rel="stylesheet">
-    
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="http://hackingmty.org/js/html5shiv.js"></script>
-      <script src="http://hackingmty.org/js/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-    <!--[if lt IE 7]>
-        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-    <div class="container">
-      <div class='col-md-10 col-md-offset-1'>
-        <div class="header">
-            <ul class="nav nav-pills pull-right">
-              <li class="active"><a href="http://hackingmty.org/index.html" title="Inicio">Inicio</a></li>
-              <li><a href="http://hackingmty.org/eventos/" title="Eventos">Eventos</a></li>
-              <li><a href="http://hackingmty.org/proyectos/" title="Proyectos">Proyectos</a></li>
-              <li><a href="http://hackingmty.org/personas/" title="Personas">Personas</a></li>
-              <li><a href="http://hackingmty.org/recursos/" title="Recursos">Recursos</a></li>
-              <li><a href="http://hackingmty.org/puf/" title="Preguntas">Preguntas</a></li>
-          </ul>
-
-
-          <h3 class="text-muted"><a href="http://hackingmty.org/">Hacking Monterrey</a></h3>
-        </div>
-        <!-- Begin page content-->
-
-        <h1>Alcalde, ¿Cómo vamos?</h1>
+        <h1>{{title}}</h1>
         <p>Se muestra por omisión los resultados de la última evaluación hecha por el equipo detrás de <a href="http://comovamosnl.org/" title="Alcalde, ¿Cómo Vamos?">Alcalde, ¿Cómo Vamos?</a>. Si lo desea puede seleccionar las revisiones previas. También se le ofrece la posibilidad de filtrar los resultados por cada de las 10 acciones disponibles.</p>
         <p>Si desea ver el detalle de las 10 acciones por municipio puede dar clic en la barra asociada a cada municipio en la primera gráfica. Los resultados los puede exportar a PNG, JPEG, PDF y SVG.</p>
         <p>
@@ -93,44 +38,3 @@
 
         <div id="main-graph"></div>
         <div id="alt-graph"></div>
-
-        <p>Para este experimento se ha utilizado lo siguiente:</p>
-        
-        <ul>
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>JavaScript</li>
-          <li><a href="http://jquery.com">jQuery</a></li>
-          <li><a href="http://highcharts.com">Highcharts</a></li>
-          <li><a href="http://getbootstrap.com">Bootstrap</a></li>
-          <li><a href="http://mustache.github.io/">Mustache</a></li>
-          <li><a href="https://pages.github.com/">Github pages<a></li>
-          <li><a href="http://datamx.io/dataset/evaluaciones-alcalde-como-vamos">datamx.io</a>, la plataforma cívica de datos abiertos de México</li>
-          <li><a href="http://ckan.org/">CKAN</a></li>
-        </ul>
-
-        <!-- End page content-->
-        <div class="footer">
-          <div class="social-icons pull-left">
-            <a href="http://github.com/hackingmty" title="Hacking Monterrey en Github" target="_blank"><i class="icon-github icon-2x"></i></a>
-            <a href="https://plus.google.com/u/0/communities/117199441327944932251" title="Hacking Monterrey en Google+" target="_blank"><i class="icon-google-plus icon-2x"></i></a>    
-            <a href="http://twitter.com/HackNightMTY" title="Hacking Monterrey en Twitter" target="_blank"><i class="icon-twitter icon-2x"></i></a>
-          </div><!-- /.social-icons -->
-          <p class='pull-right'>&copy; Hacking Monterrey 2014 | <a href='https://github.com/hackingmty/comovamosnl'><i class='icon-github'></i> <em>Pull requests</em> bienvenidos!</a></p>
-        </div>
-      </div>
-    </div> <!-- /container -->
-
-        <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script src="//hackingmty.org/js/analytics_lib.js"></script>
-    <script src="//code.highcharts.com/highcharts.js"></script>
-    <script src="//code.highcharts.com/modules/exporting.js"></script>
-    <script src="//code.highcharts.com/modules/drilldown.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
-    <script src="trends.js"></script>
-  </body>
-</html>
